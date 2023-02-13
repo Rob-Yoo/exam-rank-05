@@ -1,6 +1,9 @@
 #ifndef WARLOCK_HPP
 # include <iostream>
 # include <string>
+# include <vector>
+# include "ASpell.hpp"
+# include "ATarget.hpp"
 
 using namespace std;
 
@@ -8,6 +11,7 @@ class Warlock {
 private:
 	string name;
 	string title;
+	vector<ASpell*> spells;
 
 	Warlock();
 	Warlock(const Warlock& other);
@@ -23,6 +27,10 @@ public:
 	void setTitle(const string& title);
 
 	void introduce() const;
+
+	void learnSpell(ASpell *spell_ptr);
+	void forgetSpell(const string& spell_name);
+	void launchSpell(const string& spell_name, const ATarget& target);
 };
 
 #endif

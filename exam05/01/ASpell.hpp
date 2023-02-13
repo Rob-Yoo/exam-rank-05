@@ -3,25 +3,28 @@
 
 # include <iostream>
 # include <string>
-# include <ATarget.hpp>
+# include "ATarget.hpp"
 
 using namespace std;
 
-class ATargert;
-
-class Aspell {
-private:
+class ATarget;
+class ASpell {
+protected:
 	string name;
 	string effects;
 
 public:
-	Aspell(const string& name, const string& effects);
-	const string& getName() const;
-	const string& getEffects() const;
+	ASpell();
+	ASpell(const string &name, const string &effects);
+	ASpell(const ASpell& other);
+	virtual ~ASpell();
 
-	virtual Aspell *clone() const = 0;
+	ASpell &operator=(const ASpell& other);
+	string getName() const;
+	string getEffects() const;
+	virtual ASpell *clone() const = 0;
 
-	void launch(const ATargert& atarget);
+	void launch(const ATarget& target) const;
 };
 
 #endif

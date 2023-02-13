@@ -7,6 +7,11 @@ Warlock::Warlock(const string& name, const string& title): name(name), title(tit
 
 Warlock::~Warlock() {
 	cout << this->name << ": My job here is done!\n";
+	vector<ASpell*>::iterator itb = this->spells.begin();
+	vector<ASpell*>::iterator ite = this->spells.end();
+	for (vector<ASpell*>::iterator it = itb;it != ite;it++)
+		delete *it;
+	this->spells.clear();
 }
 
 void Warlock::introduce() const {
